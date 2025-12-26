@@ -35,7 +35,7 @@ const QuoteModal = ({ isOpen, onClose, selectedPlan }) => {
 
     try {
       // 1. Create Order via Backend (Pointing to Port 5001)
-      const response = await fetch('${import.meta.env.VITE_API_URL}/api/payment/order', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         // FIX: WE ARE NOW SENDING ALL CLIENT DATA TO THE BACKEND

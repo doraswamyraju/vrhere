@@ -127,8 +127,8 @@ const ProjectDetailView = ({ project, onBack }) => {
   const [globalChecker, setGlobalChecker] = useState('');
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/employees').then(res => res.json()).then(data => setEmployees(data));
-    fetch('${import.meta.env.VITE_API_URL}/api/services-library').then(res => res.json()).then(data => setLibrary(data));
+    fetch(`${import.meta.env.VITE_API_URL}/api/employees`).then(res => res.json()).then(data => setEmployees(data));
+    fetch(`${import.meta.env.VITE_API_URL}/api/services-library`).then(res => res.json()).then(data => setLibrary(data));
   }, []);
 
   const handleSaveTasks = async (newTasks) => {
@@ -306,7 +306,7 @@ export default function AdminDashboard() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    fetch('${import.meta.env.VITE_API_URL}/api/admin/projects').then(res => res.json()).then(data => setProjects(data));
+    fetch(`${import.meta.env.VITE_API_URL}/api/admin/projects`).then(res => res.json()).then(data => setProjects(data));
   }, [activeTab]);
 
   const menuItems = [

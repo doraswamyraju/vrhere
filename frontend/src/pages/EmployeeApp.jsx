@@ -20,7 +20,7 @@ export default function EmployeeApp() {
   useEffect(() => {
     const fetchWork = async () => {
       try {
-        const res = await fetch('${import.meta.env.VITE_API_URL}/api/employee/projects');
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/employee/projects`);
         const data = await res.json();
         setProjects(data);
       } catch (err) { console.error("Error fetching work", err); }

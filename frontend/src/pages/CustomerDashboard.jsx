@@ -71,7 +71,7 @@ const ProjectWorkspace = ({ project, onBack }) => {
     data.append('file', file);
 
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/upload', { method: 'POST', body: data });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/upload`, { method: 'POST', body: data });
       const response = await res.json();
       if (response.success) {
         setUploads(prev => ({ ...prev, [docName]: response.filePath }));

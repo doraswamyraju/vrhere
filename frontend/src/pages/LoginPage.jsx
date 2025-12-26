@@ -17,7 +17,7 @@ const LoginPage = () => {
     setLoading(true); setMessage({ type: '', text: '' });
 
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/login', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email, password: formData.password }),
@@ -43,7 +43,7 @@ const LoginPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/forgot-password', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/forgot-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email }),
@@ -67,7 +67,7 @@ const LoginPage = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('${import.meta.env.VITE_API_URL}/api/reset-password', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/reset-password`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.email, otp: formData.otp, newPassword: formData.newPassword }),
