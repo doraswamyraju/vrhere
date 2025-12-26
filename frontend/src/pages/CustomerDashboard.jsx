@@ -71,7 +71,7 @@ const ProjectWorkspace = ({ project, onBack }) => {
     data.append('file', file);
 
     try {
-      const res = await fetch('http://localhost:5001/api/upload', { method: 'POST', body: data });
+      const res = await fetch('${import.meta.env.VITE_API_URL}/api/upload', { method: 'POST', body: data });
       const response = await res.json();
       if (response.success) {
         setUploads(prev => ({ ...prev, [docName]: response.filePath }));
@@ -233,7 +233,7 @@ const ProjectWorkspace = ({ project, onBack }) => {
                           <div key={i} className="upload-row">
                              <div className="flex-1">
                                 <p className="text-sm font-medium text-slate-700">{doc}</p>
-                                {uploads[doc] && <a href={`http://localhost:5001${uploads[doc]}`} target="_blank" className="text-[10px] text-emerald-600 font-bold flex items-center mt-1"><CheckCircle size={10} className="mr-1"/> View File</a>}
+                                {uploads[doc] && <a href={`${import.meta.env.VITE_API_URL}${uploads[doc]}`} target="_blank" className="text-[10px] text-emerald-600 font-bold flex items-center mt-1"><CheckCircle size={10} className="mr-1"/> View File</a>}
                              </div>
                              <div className="relative">
                                  <input type="file" id={`file-A-${i}`} className="hidden" onChange={(e) => handleFileUpload(e, doc)}/>
@@ -255,7 +255,7 @@ const ProjectWorkspace = ({ project, onBack }) => {
                           <div key={i} className="upload-row">
                              <div className="flex-1">
                                 <p className="text-sm font-medium text-slate-700">{doc}</p>
-                                {uploads[doc] && <a href={`http://localhost:5001${uploads[doc]}`} target="_blank" className="text-[10px] text-emerald-600 font-bold flex items-center mt-1"><CheckCircle size={10} className="mr-1"/> View File</a>}
+                                {uploads[doc] && <a href={`${import.meta.env.VITE_API_URL}${uploads[doc]}`} target="_blank" className="text-[10px] text-emerald-600 font-bold flex items-center mt-1"><CheckCircle size={10} className="mr-1"/> View File</a>}
                              </div>
                              <div className="relative">
                                  <input type="file" id={`file-B-${i}`} className="hidden" onChange={(e) => handleFileUpload(e, doc)}/>
@@ -331,7 +331,7 @@ export default function CustomerDashboard() {
     const fetchData = async () => {
       try {
         const email = location.state?.email || 'doraswamyraju.ca@gmail.com'; 
-        const res = await fetch(`http://localhost:5001/api/client-dashboard/${email}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/client-dashboard/${email}`);
         const data = await res.json();
         if (res.ok) { setClientData(data.user); setProjects(data.projects); }
       } catch (err) { console.error(err); } finally { setLoading(false); }

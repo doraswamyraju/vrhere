@@ -127,13 +127,13 @@ const ProjectDetailView = ({ project, onBack }) => {
   const [globalChecker, setGlobalChecker] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/employees').then(res => res.json()).then(data => setEmployees(data));
-    fetch('http://localhost:5001/api/services-library').then(res => res.json()).then(data => setLibrary(data));
+    fetch('${import.meta.env.VITE_API_URL}/api/employees').then(res => res.json()).then(data => setEmployees(data));
+    fetch('${import.meta.env.VITE_API_URL}/api/services-library').then(res => res.json()).then(data => setLibrary(data));
   }, []);
 
   const handleSaveTasks = async (newTasks) => {
     setTasks(newTasks);
-    await fetch(`http://localhost:5001/api/projects/${project._id}/import-tasks`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/projects/${project._id}/import-tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ tasks: newTasks })
@@ -306,7 +306,7 @@ export default function AdminDashboard() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/admin/projects').then(res => res.json()).then(data => setProjects(data));
+    fetch('${import.meta.env.VITE_API_URL}/api/admin/projects').then(res => res.json()).then(data => setProjects(data));
   }, [activeTab]);
 
   const menuItems = [
